@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title id="titl_aviokompanija">Your reservation</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_responsive.css">
+	<link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/offers_responsive.css">
+	<link rel="stylesheet" type="text/css" href="styles/moe.css">
+</head>
+
+<body>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="js/mustache.js"></script>
+<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+
+<script src="js/single_listing_custom.js"></script>
+<script src="js/rezervacijaPreview.js"></script>
+<script src="js/offers_custom.js"></script>
+
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo"><a href="index.html"><img src="images/logo.png" alt="">where to</a></div>
+						</div>
+						<div style="margin-right:0%" class="main_nav_container ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="index.html">home</a></li>
+								<li class="main_nav_item"><a href="profil.html">profile</a></li>
+								<li class="main_nav_item"><a onclick="javascript:odjava()" href="index.html">log out</a></li>
+							</ul>
+						</div>
+						<div class="content_search ml-lg-0 ml-auto">
+						</div>
+
+						<form id="search_form" class="search_form bez_1">
+							<input type="search" class="search_content_input bez_1">
+						</form>
+						
+						<div class="hamburger">
+							<i class="fa fa-bars trans_200"></i>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</nav>
+
+	</header>
+
+	<div class="menu trans_500">
+		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+			<div class="menu_close_container"><div class="menu_close"></div></div>
+			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+			<ul>
+				<li class="menu_item"><a href="index.html">home</a></li>
+				<li class="menu_item"><a href="about.html">about us</a></li>
+				<li class="menu_item"><a href="offers.html">offers</a></li>
+				<li class="menu_item"><a href="blog.html">news</a></li>
+				<li class="menu_item"><a href="contact.html">contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Home -->
+
+	<div style="position: relative;" class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/single_background.jpg"></div>
+		<div class="home_content">
+			<div class="home_title" style="text-align:center; margin-top:500px" id="flightLocationTittle1">Review your reservation</div>
+			
+		</div>
+	</div>
+
+	<!-- Offers -->
+
+	<div class="listing">
+
+
+
+		<!-- DEFAULTNI PRIKAZ PRILIKOM ULASKA NA STRANICU AVIO KOMPANIJE -->
+		<div class="container" style="margin-top: -5%">
+			
+			<div class="row" >
+				<div   class="col-lg-12">
+					<div id="defaultAirlineView" class="single_listing">
+						<br>
+						<br>
+
+						<h3><b>Flight Information: <button id="rate_flight" style="margin-left:7%; margin-top:0px; height:40px; align-content: center;text-align: center;vertical-align:center" class="button search_button" onclick="javascript:oceniLet();">Rate flight</button><button id="rate_avio" style="margin-left:7%; margin-top:0px; height:40px; align-content: center;text-align: center;vertical-align:center" class="button search_button" onclick="javascript:oceniAvio();">Rate aviocompany</button><button style="margin-left:7%; margin-top:0px; height:40px; align-content: center;text-align: center;" class="button search_button" id="cancel_let" onclick="javascript:otkaziLet();">Cancel flight</button>
+
+						</b></h3>
+						<br>
+						
+						<div id='rating1' hidden="true">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <button type="submit" class="button search_button" style="margin-left:2%; margin-top:0px; height:40px;" id="ocenaLeta" >Rate</button>
+						</div>
+						<div id='rating2' hidden="true">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <button type="submit" class="button search_button" style="margin-left:2%; margin-top:0px; height:40px;" id="ocenaAvio" >Rate</button>
+						</div>
+						<br>
+						<br>
+						<ul style="list-style-type:circle; margin-left:15px">
+							<li><p id="flightFrom">From: </p></li>
+							<li><p id="flightTo">To: </p></li>
+							<li><p id="flightDuration">Duration: </p></li>
+							<li><p id="flightDeparture">Departure time: </p></li>
+							<li><p id="flightArrival">Arrival time: </p></li>
+							<li><p id="flightReserver">Reservation made by: </p></li>
+						</ul>
+					
+						<br>
+						<br>
+						<br>
+						<br>
+						<h3><b>Passenger Information:</b></h3>
+						<br>
+						<br>
+						<table id="putniciTabela" style="margin-left:auto; margin-right: auto">
+	
+						  <tr>
+								<th> # </th>
+								<th> Passenger </th>
+								<th> Passport number </th>
+								<th> Luggage </th>	
+						    	<th> Seat </th>
+						    	<th> Confirmed </th>
+						  </tr>
+						  
+						   <template id="itemTemplate">
+						    	<tr>
+									<td id="itemNumber"> </td>
+									<td id="itemName"> </td>
+									<td id="itemPass"> </td>
+									<td id="itemLug"> </td>
+									<td id="itemSeat"> </td>
+									<td id="itemConfirmed"> </td>
+								</tr>
+							</template>
+								
+				
+						</table>	
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<h3><b>Hotel Reservation:<button style="margin-left:7%; margin-top:0px; margin-bottom:0px; height:40px; align-content: center;text-align: center;" class="button search_button" id="cancel_hotel" onclick="javascript:otkaziHotel();">Cancel hotel reservation</button>
+						</b></h3><br>
+
+						
+						<br>
+						<br>
+						<br>
+						<div id="noHotel" style="margin-left:auto; margin-right:auto">
+						    <p style="margin-left:auto; margin-right:auto; align-content: center;text-align: center;" >No hotel reservations have been made.</p>
+							<button style="margin-left:41%; margin-right:auto; align-content: center;text-align: center;" class="button search_button" onclick="javascript:bookHotel()" id="bookHotel">BOOK A HOTEL<span></span><span></span><span></span></button>
+						</div>
+						<div id="infoHotel" hidden="true" style="display: inline;" >
+							<form id="hotel_form" style="align:center;">
+							<div  style="width: 20%; height: 40px; margin-left:40%;" class="search_item">
+								<div style="color:black;">check out date</div>
+									<input type="date" class="check_out search_input" name="check_out_hotel" placeholder="dd/mm/yyyy" required="required" style="border-style: solid;">
+								</div>
+								<button style="margin-top: 60px; margin-left:41%; margin-right:auto; align-content: center;text-align: center;" class="button search_button" >Search<span></span><span></span><span></span></button>
+							</form>
+						</div>
+						
+						<div id="hasHotelReservation" hidden="true">
+							<ul id="list_hotel" style="list-style-type:circle; margin-left:15px">
+								<li><p id="check_in_hotel_res">Check in date: </p></li>
+								<li><p id="check_out_hotel_res">Check out date: </p></li>
+								
+								<li><span id="hotel_res">Hotel: </span><button id="rate_hotel" style="margin-left:7%; margin-top:0px; height:40px;  align-content: center;text-align: center;" class="button search_button" onclick="javascript:oceniHotel();">Rate hotel</button></li><br>
+								<div id='rating3' hidden="true">
+						  		<span></span>
+						  		<span></span>
+						  		<span></span>
+						 	   	<span></span>
+						  		<span></span>
+						  		<button type="submit" class="button search_button" style="margin-left:2%; margin-top:0px; height:40px;" id="ocenaHotel">Rate</button>
+								</div>
+								<br><br>
+								<li><span id="room_res">Number of beds in room: </span><button id="rate_room" style="margin-left:18%; margin-top:0px; height:40px; align-content: center;text-align: center;" class="button search_button" onclick="javascript:oceniSobu();">Rate room</button></li><br>
+								<div id='rating4' hidden="true">
+						 		 <span></span>
+						  		<span></span>
+						  		<span></span>
+						  		<span></span>
+						  		<span></span>
+						 		 <button type="submit" class="button search_button" style="margin-left:2%; margin-top:0px; height:40px;" id="ocenaSoba">Rate</button>
+								</div><br><br>
+								
+								<li id="services_included_p"><p>Services included: </p></li>
+								<ul id="included_services" style="margin-left: 20px; list-style-type: disk;">
+								</ul>
+
+								<li><p id="cost_hotel_res">Cost: $</p></li>
+							</ul>
+						</div>
+						
+						<br>
+						<br>
+						<br>
+						<br>
+						<h3><b>Rental Car Reservation: <button style="margin-left:7%; margin-top:0px; margin-bottom:0px; height:40px; align-content: center;text-align: center;" class="button search_button" id="cancel_car" onclick="javascript:otkaziAuto();">Cancel car reservation</button>
+						</b></h3><br><br>
+						<br>
+						<br>
+						<div id="noRental">
+						    <p style="margin-left:auto; margin-right:auto; align-content: center;text-align: center;" >No rental reservations have been made.</p>
+							<button style="margin-left:41%; margin-right:auto; align-content: center;text-align: center;" class="button search_button" onclick="javascript:rezervisiVozilo();" id="bookCar">RENT A CAR<span></span><span></span><span></span></button>
+							</div>
+							<div id="hocuVozilo" hidden="true" style="display:inline;" >
+							<form id="rentacar" style="align:center;">
+							<div  style="width: 20%; height: 40px; margin-left:40%;" class="search_item">
+										<div style="color:black;">check out date</div>
+										<input type="date" class="check_out search_input"  name="check_out_car" placeholder="dd/mm/yyyy" required="required" style="border-style: solid;">
+									</div>
+									<div class="search_item" style="width: 20%; height: 40px; margin-top: 50px; margin-left:40%;" >
+										<div style="color:black;">check out town</div>
+										<input type="text"  name="check_out_town" class="destination rental_name search_input" required="required" style="border-style: solid;">
+									</div>
+									<button style="margin-left:41%; margin-right:auto; align-content: center;text-align: center;" class="button search_button" >Search<span></span><span></span><span></span></button>
+						
+							</form>
+							</div>
+							<div id="hasCar" hidden="true">
+							<ul style="list-style-type:circle; margin-left:15px">
+							<li><span id="servis">Rentacar: </span><button id="rate_rentacar" style="margin-left:7%; margin-top:0px; height:40px;  align-content: center;text-align: center;" class="button search_button" onclick="javascript:oceniRent();">Rate rentacar</button></li><br>
+							<div id='rating5' hidden="true">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <button type="submit" class="button search_button" style="margin-left:2%; margin-top:0px; height:40px;" id="ocenaRent">Rate</button>
+						</div><br><br>
+							<li><span id="car">Car: </span><button id="rate_car" style="margin-left:18%; margin-top:0px; height:40px; align-content: center;text-align: center;" class="button search_button" onclick="javascript:oceniVozilo();">Rate car</button></li><br>
+							<div id='rating6' hidden="true">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <button type="submit" class="button search_button" style="margin-left:2%; margin-top:0px; height:40px;" id="ocenaVozilo">Rate</button>
+						</div><br>
+							<li><p id="check_in">Check in date and town: </p></li>
+							<li><p id="check_out">Check out date and town: </p></li>
+							<li><p id="cost">Cost: $</p></li>
+						</ul>
+						</div>
+						<div id="div_bonus_points" style="float: right; position: relative; margin-top: 30px; margin-bottom: 60px;">
+							<p id="users_bonus_points">Your bonus points: </p>
+							<p id="total_cost">Total cost without bonus points: $</p>
+							<p id="cost_discount">Total cost with bonus points: $</p>
+							<p id="question_bonus_points">Do you want to use bonus points?</p>
+							<span><button id="use_bonus_points" style="margin-left:0%; align-content: center;text-align: center;" class="button search_button bonus_points">Yes</button></span>
+							<span><button id="not_use_bonus_points" style="margin-left:0%; align-content: center;text-align: center;" class="button search_button bonus_points">No</button></span>
+						</div>
+						<div id="div_zavrsena_rez" style="display: none; float: right; position: relative; margin-top: 30px; margin-bottom: 60px;">
+							<p id="finish_total_cost" style="font-size: 30px; margin-left: 15px;">Total cost: $</p>
+							<button id="zavrsena_dugme" style="margin-top: 6px; align-content: center;text-align: center;" class="button search_button" onclick="javascript:zavrsiRezervaciju();">FINISH RESERVATION<span></span><span></span><span></span></button>
+						</div>
+					</div>
+		
+		</div>
+				
+	</div>
+
+		
+</div>
+</div>
+</div>
+
+
+	<!-- Copyright -->
+
+	<div  class="copyright">
+		<div  class="container">
+			<div class="row">
+				<div style="content-align:center" class="col-lg-3 order-lg-1 order-2  ">
+					<div  class="copyright_content d-flex flex-row align-items-center">
+						<div style="margin-left:0%;">
+							&copy; Internet software architecture project by: Milica, Andrijana and Aleksa 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<!--FRAMEWORKS-->
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="js/offers_custom.js"></script>
+
+
+
+
+<!-- TEMPLATE -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Airline Administration</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_hotel_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_responsive.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+</head>
+
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+
+		<!-- Top Bar -->
+
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col d-flex flex-row">
+						<div class="user_box ml-auto">
+							<div id="prijava" class="user_box_login user_box_link"><a href="prijava.html">login</a></div>
+							<div id="reg" class="user_box_register user_box_link"><a href="registration.html">register</a></div>
+							<div id="odjava" class="user_box_login user_box_link" onclick="javascript:odjava()" ><a href="index.html">logout</a></div>
+							<div id="profilKorisnika" class="user_box_register user_box_link" ><a href="profil.html">profile</a></div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo"><a href="index.html"><img src="images/logo.png" alt="">where to</a></div>
+						</div>
+						<div class="main_nav_container ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="index.html">home</a></li>
+							</ul>
+						</div>
+
+						<form id="search_form" class="search_form bez_1">
+							<input type="search" class="search_content_input bez_1">
+						</form>
+						
+						<div class="hamburger">
+							<i class="fa fa-bars trans_200"></i>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</nav>
+
+	</header>
+
+	<div class="menu trans_500">
+		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+			<div class="menu_close_container"><div class="menu_close"></div></div>
+			<div class="logo menu_logo"><a href="index.html"><img src="images/logo.png" alt=""></a></div>
+			<ul>
+				<li class="menu_item"><a href="index.html">home</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/single_background.jpg"></div>
+		<div class="home_content">
+			<div class="home_title" id="airlineName">airline name</div>
+		</div>
+	</div>
+
+	<!-- Offers -->
+
+	<div class="listing">
+
+		<!-- Single Listing -->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="single_listing" style="padding-top: 10px;">
+						
+						<!-- Hotel Info -->
+
+						<div class="hotel_info">
+
+							<!-- dugmad za izmenu hotela -->
+
+							
+							<div class="hotel_info_text" style="padding-bottom: 20px;">
+								<p id="airlineDeskriptor" style="font-size: 20px; color: #4d0066; text-align: center;margin-top:10%;margin-bottom:10%">Airline description </p>
+							</div>
+							
+				
+							
+							<div style="width: 250px;">
+								<p id="text_average_rating" style="font-size: 15pt; font-weight: bold; color: #4d0066;">Average rating: </p>
+								<span class="span_room room_rating review_rating" id="average_rating" style="bottom: 0px; width: 55px; height: 40px; padding-left: 14px; padding-top: 0px; padding-right: 0px; padding-bottom: 10px;"></span>
+							</div>
+							<p hidden id="noRatings"> Has not been rated yet. </p>
+							
+							<div style="margin-top:5%;margin-bottom:-10%" id="searchListing" class="single_listing">		
+								<h1 style="margin-bottom:10%"  class="hotel_title" id="naslovListing" >Destination</h1>
+
+								
+								<br><br>
+								
+								<ul style="list-style-type:none"  id="selektovaniLetovi">
+		
+								</ul>
+								
+								<template id="pretragaTemplate">
+									<div class="room">
+										<!-- Room -->
+										<div class="row">
+											<div class="col-lg-2">
+												<div class="room_image"><img src="images/departure.png" style="float:left;height: 30px;width: 50px; margin-top: 35%; margin-left: 35%" alt=""></div>
+											</div>
+											<div class="col-lg-7">
+												<div class="room_content">
+													<div class="room_title">{{odakle}}</div>
+													<div class="room_price" id="vremePoletanja" style="margin-top: 0%">Departure: {{vremePoletanja}}</div>
+													<br>
+													<div class="room_title">{{dokle}}</div>
+													<div class="room_price" id="vremeSletanja" style="margin-top: 0%">Arrives: {{vremeSletanja}}</div>
+													<div style="font-size: x-large" id="cenaPopust" class="room_text">{{cena}}</div>
+													
+													<div hidden id="flightRating" style="margin-top:3%; margin-bottom:2%">
+														
+														<p hidden id="noFlightRatings">Has not been rated yet.</p>
+														<div class="room_price" style="margin-top: 2%;margin-bottom:20px\">Flight rating: </div>
+														<span class="span_room room_rating review_rating" id="avgFlightRating" style="margin-right: 67%;bottom: -10px; width: 55px; height: 40px; padding-left: 14px; padding-top: 0px; padding-right: 0px; padding-bottom: 10px;"></span>
+														
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-3 text-lg-right">
+												<div class="room_button">
+													<div style="margin-top: -4%;" class="button book_button trans_200 "><a id="removeButton" class href="javascript:void(0)">REMOVE<span></span><span></span><span></span></a></div>
+													<div style="margin-top: 4%;" class="button book_button trans_200 "><a id="markAsSpecialButton" class href="javascript:void(0)">mark as special</a></div>
+												</div>
+											</div>
+		
+										</div>
+		
+										<hr>
+									</div>
+								</template>
+							</div>
+							
+							<div style="margin-top:9%;margin-bottom:10%" id="specialOffers">
+									<br>
+									<h1 class="hotel_title">Special Offers</h1>
+									<h4>BOOK THIS FLIGHTS WITH JUST ONE CLICK!</h4>
+									<p>( available for one person with CARRY ON luggage only )</p>
+									<br>
+									<div class="rooms">
+										<ul style="list-style-type:none" id="action_list">
+										
+										 </ul>
+										 <p hidden id="noActions" style="margin-top:-7%">There are no flights on discount.</p>
+										 <template id="action_template">
+											<div class="room">
+												<!-- Room -->
+												<div class="row">
+													<div class="col-lg-2">
+														<div class="room_image"><img src="images/departure.png" style="height: 30px;width: 50px; margin-top: 35%; margin-left: 35%" alt=""></div>
+													</div>
+													<div class="col-lg-7">
+														<div class="room_content">
+															<div class="room_title">{{odakle}}</div>
+															<div class="room_price" id="vremePoletanja" style="margin-top: 0%">{{vremePoletanja}}</div>
+															<br>
+															<div class="room_title">{{dokle}}</div>
+															<div class="room_price" id="vremeSletanja" style="margin-top: 0%">{{vremeSletanja}}</div>
+																<div style="margin-top:15px;float:left; margin-right:30px" id="cenaOriginal" ><strike> {{cena}}.00</strike></div>
+																<div style="font-size: x-large" id="cenaPopust" class="room_text">{{cena}}</div>
+														</div>
+													</div>
+													<div class="col-lg-3 text-lg-right">
+														<div class="room_button">
+															<div style="margin-top: 0%" class="button book_button trans_200"><a href="javascript:void(0)" id="removeDiscountButton">remove discount<span></span><span></span><span></span></a></div>
+														</div>
+													</div>
+			
+												</div>
+			
+												<hr>
+											</div>
+										</template>
+									</div>
+							</div>
+							
+							<div style="margin-bottom:5%"  id="findUsDiv">
+								<h4>Locition: </h4>
+								<div style="margin-top:3%">
+									<span class="contact_info_icon" style="float: left;"><img src="images/placeholder.svg" alt="" height="20" width="20"></span>
+									<span><p class="offers_text" id = "adresaLokala"></p></span>
+								</div>
+								<div style="width: 100%; margin-top: 3%" class="location_on_map">
+									<div  class="travelix_map" style="margin-top: 10px">
+										<div id="google_map" class="google_map">
+											<div class="map_container">
+												<div id="map" class="map"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+
+							
+							<!-- Hotel Info Tags -->
+							<div class="hotel_info_tags" id="additional_services">
+								
+								<ul id="usluge_hotela" style="margin-left: 60px; font-size: 15px; list-style-type: disc;">
+									
+								</ul>
+							</div>
+
+							
+						</div>
+						<p id="text_no_rooms" style="font-size: 15pt; font-weight: bold; color: #4d0066;"></p>
+						<!-- Rooms -->
+						
+						<div class="rooms" id="ubaci_sobe_template">
+								<template id="template_room">
+								<!-- Room -->
+									<div class="room" id="ubaci_sobu">
+										
+										<!-- Room -->
+										<div class="row">
+											<div class="div_append" style="text-align: center; width: 100%;">
+												<span class="span_room room_name" id="naziv" style="font-size: 20pt; float: left; font-weight: bold; color: #4d0066;">Double or Twin Room</span>
+												<span class="span_room room_price" id="broj_kreveta" style="margin-top: -10px; white-space: pre; width: 30%; float: left; font-size: 10pt"></span>
+												<span class="span_room room_price" id="cena_nocenja" style="margin-top: 5px; float: left; white-space: pre; font-size: 12pt"></span>
+												<span class="span_room room_rating review_rating" id="prosecna_ocena" style="float: left; bottom: 4px; position: relative"></span>
+												<span class="span_room button book_button trans_200" id="button_edit_room" style="bottom: -7px; top: 5px; padding: 0px; width: 120px;"><a class="button_edit_room" style="padding-left: 25px; cursor: pointer; color: white;">Edit room</a></span>
+												<span class="span_room button book_button trans_200" id="button_delete_room" style="margin-right:5%; float: right; bottom: -7px; top: 5px; padding: 0px; width: 120px;"><a class="button_delete_room" style="padding-left: 15px; cursor: pointer; color: white;">Delete room</a></span>
+											</div>
+											<div style="width: 100%;">
+												<p id="text_discount_list" style="display: none; font-size: 13pt; margin-left: 30px; color: #4d0066;">Discount list: </p>
+												<ul id="discount_list" style="margin-left: 60px; font-size: 15px; list-style-type: disc; margin-top: 10px;">
+												</ul>
+											</div>
+										</div>	
+									</div>
+								</template>
+						</div>
+						
+						<!-- forma za izmenu hotela -->
+						
+							<p style="font-size: 15pt; font-weight: bold; color: #4d0066;text-align:center; margin-bottom:5%;margin-top:15%">M A N A G E &nbsp;&nbsp; R E S O U R C E S</p>
+							<div style="width: 100%; margin-top: 55px; margin-bottom:10%; text-align:center">
+								<div id="div_changing_buttons">
+									<button id="editAirlineButton" style="margin-right: 3%; margin-left: 0; margin-top: 10px;" class="button search_button" >Edit Airline</button>
+									<button id="editLuggageInfo" style="margin-right: 3%; margin-top: 10px;" class="button search_button"> Edit Luggage Info</button>
+									<button id="addFlightButton" style="margin-right: 3%; margin-top: 10px;" class="button search_button">Add flight</button>
+									<button id="editFlightButton" style="margin-right: 3%; margin-top: 10px;" class="button search_button">Edit flight</button>
+									<button id="reportButton" style="margin-right: 0%; margin-top: 10px;" class="button search_button">Show report</button>
+								</div>
+							
+							</div>
+						
+						
+						
+						<!-- AVIOKOMPANIJA ETID -->
+						<div style="margin-bottom: 60px; display: none;" id="editAirlineDiv">
+							<div id="editAirlineFields" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+								<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Name: </div>
+									<input id="airlineNameField" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_name" class="search_input">
+									<p id="airlineNameError" hidden style="color:red">Please insert correct name.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;">City: </div>
+									<input id="airlineCity" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_city" class="search_input" >
+									<p id="airlineCityError" hidden style="color:red">Please insert correct city name.</p>
+									
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Street: </div>
+									<input id="airlineStreet" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_street" class="search_input" >
+									<p id="airlineStreetError" hidden style="color:red">Please insert correct street name.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Number in street: </div>
+									<input id="airlineNumber" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_street_number" class="search_input" >
+									<p id="airlineNumberError" hidden style="color:red">Please insert correct street number.</p>
+									<br>
+								</div>
+								
+								<div style="width: 100%; margin-top: 0%">
+									<a  target="_blank"  href="https://www.latlong.net/convert-address-to-lat-long.html">Click here to calculate latitude and longitude from address</a>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Latitude: </div>
+									<input id="airlineLatituda" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_latitude" class="search_input" >
+									<p id="airlineLatitudaError" hidden style="color:red">Please insert correct latitude value.</p>
+									<br>
+								</div>
+				
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Longitude: </div>
+									<input id="airlineLongituda" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="airlineLongitudaError" hidden style="color:red">Please insert correct longitude value.</p>
+									<br>
+								</div>
+					
+								<div style="width: 74%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Description: </div>
+									<textarea id="airlineDesc" maxlength="255" style="border-color: #31124A; border-style: solid; height: 150px;" name="hotel_description" class="search_input" ></textarea>
+									<p id="descError" hidden style="color:red">Description must not be empty.</p>
+									<br>
+								</div>
+								
+								<div style=" width: 24%; float: right; margin-top: -4%">
+									<button id="editAirlineAction" style="width: 100%;" class="button search_button">EDIT</button>
+									<button id="backButtonAirline" style="width: 100%; margin-bottom: 15px; margin-top: 40px; text-align:center" class="button search_button" >Back</button>
+								</div>
+							</div>
+							
+						</div>
+						
+						
+						
+						
+						
+						<!-- PRTLJAG ETID -->
+						<div style=" width: 100%; margin-top: 60px; margin-bottom: 60px; " id="editLuggageInfoDiv">
+							<div id="editAirlineFields" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+								<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Maximum weight for standard luggage: </div>
+									<input id="standardMax" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_name" class="search_input" >
+									<p id="standardMaxError" hidden style="color:red">Please insert correct value.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Price of standard luggage: </div>
+									<input id="standardPrice" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_city" class="search_input" >
+									<p id="standardPriceError" hidden style="color:red">Please insert correct value.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Maximum weight for supersized luggage: </div>
+									<input id="extraMax" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_street" class="search_input" >
+									<p id="extraMaxError" hidden style="color:red">Please insert correct value.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Price of supersized luggage: </div>
+									<input id="extraPrice" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_street_number" class="search_input" >
+									<p id="extraPriceError" hidden style="color:red">Please insert correct value.</p>
+									<br>
+								</div>
+					
+								<div style="width: 74%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Description: </div>
+									<textarea id="luggageDesc" maxlength="255" style="border-color: #31124A; border-style: solid; height: 150px;" name="hotel_description" class="search_input" ></textarea>
+									<br>
+								</div>
+								
+								<div style=" width: 24%; float: right; margin-top: -3%">
+									<button id="editLuggageAction" style="width: 100%;" class="button search_button">EDIT</button>
+									<button id="backButtonLuggage" style="width: 100%; margin-bottom: 15px; margin-top: 40px;" class="button search_button" >Back</button>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						<!-- FLIGHT ADD -->
+						<div style=" width: 100%; margin-top: 60px; margin-bottom: 60px; display: none;" id="newFlightDiv">
+							<div id="editAirlineFields" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+								<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >From: </div>
+									<input id="flightFromAdd" placeholder="CITY - COUNTRY" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_name" class="search_input" >
+									<p id="flightFromAddError"  hidden style="color:red">Please insert correct departure place.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;">To: </div>
+									<input id="flightToAdd" placeholder="CITY - COUNTRY" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_city" class="search_input" >
+									<p id="flightToAddError" hidden style="color:red">Please insert valid arrival destination.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Departure Time: </div>
+									<input id="departureAdd" style="border-color: #31124A; border-style: solid;" type="datetime-local" name="hotel_street" class="search_input" >
+									<p id="departureAddError" hidden style="color:red">Please insert valid departure time.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Arrival Time: </div>
+									<input id="arrivalAdd" style="border-color: #31124A; border-style: solid;" type="datetime-local" name="hotel_street_number" class="search_input" >
+									<p id="arrivalAddError"  hidden style="color:red">Please insert valid arrival time.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Duration: (hours) </div>
+									<input id="durationAdd" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_latitude" class="search_input" >
+									<p id="duratioAddnError"  hidden style="color:red"> Please insert valid flight duration.</p>
+									<br>
+								</div>
+				
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Distance: </div>
+									<input id="distanceAdd" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="distanceAddError"  hidden style="color:red">Please insert valid distance.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Price: </div>
+									<input id="priceAdd" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="priceAddError"  hidden style="color:red">Please insert valid price.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Maximum capacity on plane: </div>
+									<input id="maxKapAdd" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="maxKapAddError"  hidden style="color:red">Please insert valid max capacity, dividable by 4.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Discount: (%) </div>
+									<input id="discountAdd" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="discountAddError"  hidden style="color:red">Please insert valid discout value, 1 - 100.</p>
+									<br>
+								</div>
+								
+								<div style=" width: 24%; float: right; margin-top: -3%">
+									<button id="addFlightAction" style="width: 100%;" class="button search_button">ADD</button>
+									<button id="backButtonAddFlight" style="width: 100%; margin-bottom: 15px; margin-top: 40px;" class="button search_button" >Back</button>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						
+						<!-- FLIGHT EDIT -->
+						<div style=" width: 100%; margin-top: 60px; margin-bottom: 60px; display: none;" id="editFlightDiv">
+							<div id="editAirlineFields" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+								
+								<div style="height: 121px; width: 100%;" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Select Flight: </div>
+									<select id="selectFlight" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_name" class="search_input" ></select>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >From: </div>
+									<input id="flightFromEdit" placeholder="CITY - COUNTRY" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_name" class="search_input" >
+									<p id="flightFromEditError"  hidden style="color:red">Please insert correct departure place.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">To: </div>
+									<input id="flightToEdit" placeholder="CITY - COUNTRY" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_city" class="search_input" >
+									<p id="flightToEditError" hidden style="color:red">Please insert valid arrival destination.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Departure Time: </div>
+									<input id="departureEdit" style="border-color: #31124A; border-style: solid;" type="datetime-local" name="hotel_street" class="search_input" >
+									<p id="departureEditError" hidden style="color:red">Please insert valid departure time.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Arrival Time: </div>
+									<input id="arrivalEdit" style="border-color: #31124A; border-style: solid;" type="datetime-local" name="hotel_street_number" class="search_input" >
+									<p id="arrivalEditError"  hidden style="color:red">Please insert valid arrival time.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Duration: (hours) </div>
+									<input id="durationEdit" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_latitude" class="search_input" >
+									<p id="durationEditError"  hidden style="color:red"> Please insert valid flight duration.</p>
+									<br>
+								</div>
+				
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Distance: </div>
+									<input id="distanceEdit" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="distanceEditError"  hidden style="color:red">Please insert valid distance.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Price: </div>
+									<input id="priceEdit" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="priceEditError"  hidden style="color:red">Please insert valid price.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Maximum capacity on plane: </div>
+									<input id="maxKapEdit" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="maxKapErrorError"  hidden style="color:red">Please insert valid max capacity, dividable by 4.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Discount: (%) </div>
+									<input id="discountEdit" style="border-color: #31124A; border-style: solid;" type="text" name="hotel_longitude" class="search_input" >
+									<p id="discountEditError"  hidden style="color:red">Please insert valid discout value, 1 - 100.</p>
+									<br>
+								</div>
+								
+								<div style=" width: 24%; float: right; margin-top: -3%">
+									<button id="editFlightAction" style="width: 100%;" class="button search_button">EDIT</button>
+									<button id="backButtonEditFlight" style="width: 100%; margin-bottom: 15px; margin-top: 40px;" class="button search_button" >Back</button>
+								</div>
+							</div>
+						</div>
+						
+						
+						<!-- forma za dodavanje novog popusta -->
+						
+
+						
+						<!-- izvestaji i grafici -->
+						
+						<div id="div_report" style=" width: 100%; margin-top: 30px; margin-bottom: 60px; display: none;">
+							
+							<canvas id="bar-chart-day" style="height: 70;"></canvas>
+							<div id="totalDay" style="font-size:20pt; font-weight:bold; color:green;"></div>
+							<br/><br/><br/>
+							
+							<canvas id="bar-chart-week" style="height: 70;"></canvas>
+							<div id="totalWeek" style="font-size:20pt; font-weight:bold; color:green;"></div>
+							<br/><br/><br/>
+							
+							<canvas id="bar-chart-month" style="height: 70;"></canvas>
+							<div id="totalMonth" style="font-size:20pt; font-weight:bold; color:green;"></div>
+							<br/><br/><br/>
+							<button type="button" id="button_hotel_back" style="width: 24%; margin-bottom: 15px; margin-top: 20px; float: right; position: relative;" class="button search_button" onclick="javascript:backEdit()">Back</button>
+						
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<!-- Footer Column -->
+				<div class="col-lg-3 footer_column">
+					<div class="footer_col">
+						<div class="footer_content footer_about">
+							<div class="logo_container footer_logo">
+								<div class="logo"><a href="index.html"><img src="images/logo.png" alt="">where to</a></div>
+							</div>
+							<p class="footer_about_text" style="font-size: 40px; font-family: 'Beyond'; align: 'center';">Putujte sa nama, najbolji smo!</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Footer Column -->
+				<div class="col-lg-3 footer_column">
+					<div class="footer_col">
+						<div class="footer_title">contact info</div>
+						<div class="footer_content footer_contact">
+							<ul class="contact_info_list">
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div></div>
+									<div class="contact_info_text">Step town</div>
+								</li>
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div></div>
+									<div class="contact_info_text">+381 65 203 41 33</div>
+								</li>
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="images/message.svg" alt=""></div></div>
+									<div class="contact_info_text"><a href="mailto:whereto18@gmail.com?Subject=Hello" target="_top">whereto18@gmail.com</a></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+	<!-- Copyright -->
+
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 order-lg-1 order-2  ">
+					<div class="copyright_content d-flex flex-row align-items-center">
+						<div><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+					</div>
+				</div>
+				<div class="col-lg-9 order-lg-2 order-1">
+					<div class="footer_nav_container d-flex flex-row align-items-center justify-content-lg-end">
+						<div class="footer_nav">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="js/single_listing_custom.js"></script>
+<script src="js/avioAdmin.js"></script>
+<script src="js/mustache.js"></script>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+</body>
+

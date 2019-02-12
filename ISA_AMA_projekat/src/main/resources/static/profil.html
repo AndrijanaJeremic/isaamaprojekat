@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>My profile</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_responsive.css">
+</head>
+
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+
+		<!-- Top Bar -->
+
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo"><a href="index.html"><img src="images/logo.png" alt="">where to</a></div>
+						</div>
+						<div style="margin-right:0%" class="main_nav_container ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="index.html">home</a></li>
+								<li class="main_nav_item"><a href="profil.html">profile</a></li>
+								<li class="main_nav_item"><a onclick="javascript:odjava()" href="index.html">log out</a></li>
+							</ul>
+						</div>
+						<div class="content_search ml-lg-0 ml-auto">
+						</div>
+
+						<form id="search_form" class="search_form bez_1">
+							<input type="search" class="search_content_input bez_1">
+						</form>
+						
+						<div class="hamburger">
+							<i class="fa fa-bars trans_200"></i>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</nav>
+
+	</header>
+
+	<div class="menu trans_500">
+		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+			<div class="menu_close_container"><div class="menu_close"></div></div>
+			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+			<ul>
+				<li class="menu_item"><a href="index.html">home</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/single_background.jpg"></div>
+		<div class="home_content">
+			<div id="naslov" class="home_title">My profile</div>
+		</div>
+	</div>
+
+	<!-- Offers -->
+
+	<div class="listing">
+
+		<!-- Search -->
+
+
+
+		<!-- Single Listing -->
+		
+
+		<div class="container" style="margin-top: 2%">
+			
+			
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="single_listing">
+					
+					<div style="width: 100%; margin-left:auto; margin-right:auto">
+						<div id="div_buttons">
+							<button id="button_airline" style="margin-right: 10%; margin-left: 10%; margin-top: 0px;" class="button search_button" onclick="javascript:newAirline()">New airline</button>
+							<button id="button_hotel" style="margin-right: 10%; margin-top: 0px;" class="button search_button" onclick="javascript:newHotel()">New hotel</button>
+							<button id="button_rental" style="margin-right: 10%; margin-top: 0px;" class="button search_button" onclick="javascript:newRental()">New car rental</button>
+						</div>
+						
+						
+						<div id="div_buttons_admin" style="margin-top: 25px;">
+							<button id="button_airline_admin" style="margin-right: 3%; margin-left: 3%; margin-top: 0px;" class="button search_button" onclick="javascript:newAirlineAdmin()">New airline administrator</button>
+							<button id="button_hotel_admin" style="margin-right: 3%; margin-top: 0px;" class="button search_button" onclick="javascript:newHotelAdmin()">New hotel administrator</button>
+							<button id="button_rental_admin" style="margin-right: 3%; margin-top: 0px;" class="button search_button" onclick="javascript:newRentalAdmin()">New car rental administrator</button>
+						</div>
+						<div id="div_buttons_system_admin" style="width: 400px; margin:3% auto;">
+							<button id="button_system_admin" style="margin-right: 3%; margin-top: 0px;" class="button search_button" onclick="javascript:newSystemAdmin()">New system administrator</button>
+						</div>
+						<div id="div_button_discount" style="width: 400px; margin: 3% 0px 0px 35%;">
+							<button id="button_discount" style="margin-right: 0%; margin-top: 0px;" class="button search_button" onclick="javascript:defineDiscount()">Define discount</button>
+						</div>
+						
+						<div style="margin-bottom: 60px; display: none; margin-bottom: 80px;" id="div_new">
+							<form action="#" id="add_form" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+								<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Name: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="new_name" class="search_input" required="required">
+									<p id="error_new_name" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;"></p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;">City: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="new_city" class="search_input" required="required">
+									<p id="error_new_city" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;"></p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Street: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="new_street" class="search_input" required="required">
+									<p id="error_new_street" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;"></p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Number in street: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="new_street_number" class="search_input" required="required">
+									<br>
+								</div>
+								
+								<div style="width: 100%; margin-top: 0%">
+									<a href="https://www.latlong.net/convert-address-to-lat-long.html">Click here to calculate latitude and longitude from address</a>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Latitude: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="new_latitude" class="search_input" required="required">
+									<p id="error_new_latitude" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;"></p>
+									<br>
+								</div>
+				
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Longitude: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="new_longitude" class="search_input" required="required">
+									<p id="error_new_longitude" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;"></p>
+									<br>
+								</div>
+					
+								<div style="width: 74%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Description: </div>
+									<textarea maxlength="255" style="border-color: #31124A; border-style: solid; height: 150px;" name="new_description" class="search_input" required="required"></textarea>
+									<br>
+								</div>
+								
+								<!--  onclick="javascript:add()" -->
+								<div style=" width: 24%; float: right; margin-top: 0%">
+									<input id="button_add" style="width: 100%; " value="Add airline" type="submit"  class="button search_button">
+									
+									<button type="button" id="button_back" style="width: 100%; margin-bottom: 15px; margin-top: 20px;" class="button search_button" onclick="javascript:back()">Back</button>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+					
+					<div style="width: 100%;">
+						
+						<div style="margin-top: 5%">
+							<p id="no_one" style="display: none; font-size: 20px; color: #31124A; height: 35px;">There are no airlines to add their administrators.</p>
+							<button id="button_back_admin2" style="display: none; width: 24%; float: right; margin-bottom: 10px;" class="button search_button" onclick="javascript:backAdmin()">Back</button>
+						</div>
+						<div style="margin-bottom: 60px; display: none;" id="div_new_admin">
+							<form action="#" id="add_form_admin" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+								<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >First name: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="first_name_admin" class="search_input" required="required">
+									<p id="error_name" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">First name must contains only the letters.</p>
+									<br>
+								</div>
+								
+					
+								<div style="height: 121px; width: 49%;  margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Last name: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="last_name_admin" class="search_input" required="required">
+									<p id="error_last_name" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">Last name must contains only the letters.</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Email: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="email_admin" class="search_input" required="required">
+									<p id="error_email" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">User with this email already exists.</p>
+									<br>
+								</div>
+					
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Password: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="pass_admin" class="search_input" required="required">
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >City: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="city_admin" class="search_input" required="required">
+									<p id="error_city" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">Field City must contains only the letters.</p>
+									<br>
+								</div>
+				
+								<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+									<div style="margin: 0; color: #31124A;">Phone number: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="text" name="phone_admin" class="search_input" required="required">
+									<p id="error_phone" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">Field Phone number must contains only numbers.</p>
+									<br>
+								</div>
+								
+								<div id="admin_sys_close" style="width: 100%;  margin-top: 0%" class="search_item">
+									<div id="admin_id" style="margin: 0; color: #31124A;">Airlines: </div>
+									<select name="admin_id" style="height: 46px; width: 100%; border-color: #31124A; border-style: solid; border-width: 2px;">
+									</select>
+									<br>
+								</div>
+								
+								<input id="button_add_admin" value="Add airline administrator" type="submit" style="width: 30%; margin-left: 70%;" class="button search_button">
+							</form>
+							<button id="button_back_admin" style="width: 24%; float: right; margin-bottom: 10px;" class="button search_button" onclick="javascript:backAdmin()">Back</button>
+						</div>
+						
+						
+						<div style="margin-bottom: 60px; display: none;" id="div_define_discount">
+							<form action="#" id="form_discount" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+								<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Bonus points: </div>
+									<input style="border-color: #31124A; border-style: solid;" type="number" name="bonus_points" class="search_input" required="required">
+									<p id="error_bonus_points" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">You successfully updated discount for this amount of bonus points</p>
+									<br>
+								</div>
+								
+								<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+									<div style="margin: 0; color: #31124A;" >Discount (in %): </div>
+									<input style="border-color: #31124A; border-style: solid;" type="number" name="discount" class="search_input" required="required">
+									<br>
+								</div>
+								
+								<input id="button_define_discount" value="Define" type="submit" style="width: 30%; margin-left: 70%;" class="button search_button">
+							</form>
+							<button type="button" id="button_back_admin" style="width: 24%; float: right; margin-bottom: 10px;" class="button search_button" onclick="javascript:backAdmin()">Back</button>
+						</div>
+						
+					</div>
+						<div style="margin-top:-5%">
+							<h3 style="margin-bottom: 5%; margin-top: 12%;" >MY RESERVATIONS:</h3>
+							<ul id="reservationList">
+								<template id="reservationTemplate">
+									<li style="margin-bottom:6%"  id="rezervationTag">
+												<div class="review_content">
+													<div class="review_title_container">
+														<div id="fromTo" class="review_title" style="font-style: normal; margin-top: 2%">Belgrade - SRB to Tokyo - JPN</div>
+														<span><button id="previewButton" style="float:right;margin-top: -4%;" class="button search_button" >PREVIEW</button></span>
+														<span><button id="odbijButton" class="button search_button"  hidden="true" style="float:right; margin-top: -4%;">DECLINE</button></span>
+														<span><button id="prihvatiButton" class="button search_button"  hidden="true" style="float:right; margin-top: -4%;">ACCEPT</button></span>
+														
+													</div>
+													<div id="creator">invited by: Aleksa Krsmanovic</div>
+													<div id="nepotvrdjeaRez" class="review_date">HAS NOT BEEN ACCEPTED YET</div>
+												</div>
+									</li>
+								</template>
+							</ul>
+							
+							<br>
+							<br>
+							
+							<p style="margin-top:-7%"  id="noRezervations">No reservations have been made yet.</p>
+						</div>
+
+						<!-- Zahtevi na cekanju -->
+						<div class="review">
+							<hr style="margin-bottom:6%">
+							<h3 style="margin-bottom: 5%; margin-top: 12%;" >PENDING REQUESTS:</h3>
+							<ul id="requestList">
+								<template id="requestTemplate">
+										<li style="margin-bottom:10%">
+													<div id="requestDiv" height: 80px;  vertical-align:middle"  class="review_content">
+														<div class="review_title_container">
+															<div id="from" class="review_title" style="font-style: normal; margin-top: 5%; ">Muki Mukić</div>
+															<div style="float: right; margin-top:-40px; vertical-align: middle;">
+																<button id="declineButton" class="button search_button" style=" margin-top: -15%">DECLNE</button>
+																<button id="confirmButton" class="button search_button" style="margin-top:-15%; margin-left:30px;">CONFIRM</button>
+															</div>
+														</div>
+													</div>
+										</li>
+								</template>
+							</ul>
+						</div>
+						<p hidden style="margin-top:-5%" id="noNewRequests"> No new friend requests. </p>
+						<br>
+						<br>
+
+
+						<div class="reviews">
+							<div>
+								<select id="peopleView" style="width: 20%;border: black 1px solid; margin-left: 3%;" class=" search_input">
+									<option selected value="friends">Friends</option>
+									<option value="users">All users</option>
+								</select>
+								<input id="searchField" style="border: black 1px solid; float: left; width: 30%" type="text" placeholder="Search for people in" class="destination search_input">
+								<button id="goButton" class="button search_button" style="margin-top:-20px;float:right">GO</button>
+								<hr>
+							</div>
+							<div style="width:auto;height: 400px;overflow: auto;overflow-x: hidden;"class="reviews_container">
+								<br><br>
+	
+	
+	
+	
+								<div id="prijateljiSection">
+									<ul id="friendList">
+	
+									</ul>
+										<template id="friendTemplate">
+												<li style="margin-bottom:10%">
+															<div id="friendDiv" height: 80px;  vertical-align:middle"  class="review_content">
+																<div class="review_title_container">
+																	<div id="friendName" class="review_title" style="font-style: normal; margin-top: 5%; ">Muki Mukić</div>
+																	<div style="float: right; margin-top:-40px; vertical-align: middle;">
+																		<button id="unfriendButton" class="button search_button" style="margin-top:-15%; margin-left:30px;">UNFRIEND</button>
+																	</div>
+																</div>
+															</div>
+												</li>
+										</template>
+								</div>	<!-- PRIJATELJ -->
+	
+								<div id="neprijateljiSection">
+									<ul id="userList">
+	
+									</ul>
+									
+										<template id="userTemplate">
+												<li style="margin-bottom:10%">
+															<div id="userDiv" height: 80px;  vertical-align:middle"  class="review_content">
+																<div class="review_title_container">
+																	<div id="userName" class="review_title" style="font-style: normal; margin-top: 5%; ">Muki Mukić</div>
+																	<div style="float: right; margin-top:-40px; vertical-align: middle;">
+																		<button id="befriendButton" class="button search_button" style="margin-top:-15%; margin-left:30px;">SEND REQUEST</button>
+																	</div>
+																</div>
+															</div>
+												</li>
+										</template>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>		
+		
+				<div class="search">
+			<div class="search_inner">
+
+				<!-- Search Contents -->
+
+				<div class="container fill_height no-padding">
+					<div class="row fill_height no-margin">
+						<div class="col fill_height no-padding">
+
+							<!-- Search Tabs -->
+
+
+
+							<!-- Search Panel -->
+
+							<div style=" margin-top:0%" class="search_panel active">
+								<form action="#" id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+									<div style="width: 49%;" class="search_item">
+										<div>Name: </div>
+										<input type="text" id="name_profile" class="destination search_input" required="required" readonly>
+										<br>
+									</div>
+
+									<div style="width: 49%;" class="search_item">
+										<div>Last name: </div>
+										<input type="text" id="lastname_profile" class="destination search_input" required="required" readonly>
+										<br>
+									</div>
+
+
+									<div style="width: 49%; margin-top: 3%" class="search_item">
+										<div>Email:</div>
+										<input type="text" id="email_profile" class="destination search_input" required="required" readonly>
+										<br>
+									</div>
+
+									<div style="width: 49%;  margin-top: 3%" class="search_item">
+										<div>Phone number: </div>
+										<input type="text" id="phone_profile" class="destination search_input" required="required" readonly>
+										<br>
+									</div>
+									
+									<div style="width: 49%; margin-top: 3%" class="search_item">
+										<div>City:</div>
+										<input type="text" id="city_profile" class="destination search_input" required="required" readonly>
+										<br>
+									</div>
+
+
+									<div style="width: 49%;  margin-top: 3%;" class="search_item">
+										<div>Bonus points:</div>
+										<input type="text" id="bonus_profile" class="destination search_input" required="required" readonly>
+										<br>
+									</div>
+
+
+									<div id="passChange" style="width: 49%; display: none; margin-top: 3%">
+										<div style="width: 100%;  margin-top: 3%" class="search_item">
+											<div>Old password: </div>
+											<input type="text" id="old_password_profile" class="destination search_input" >
+											<p id="error_old_pass_profile" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">The password is not correct.</p>
+											<br>
+										</div>
+										
+										<div style="width: 100%;  margin-top: 3%" class="search_item">
+											<div>New password: </div>
+											<input type="text" id="new_password_profile" class="destination search_input">
+											<br>
+										</div>
+										
+										<div style="width: 100%;  margin-top: 3%; margin-bottom: 50px" class="search_item">
+											<div>Confirm new password: </div>
+											<input type="text" id="confirm_new_password_profile" class="destination search_input">
+											<p id="error_pass_profile" style="display: none; height: 35px; margin-left: 0px; margin-top: 0px; margin-bottom: 0px; color: #31124A; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">The passwords must be the same.</p>
+											<br>
+										</div>
+									</div>
+									
+									<div style="width: 100%;  margin-top: 3%; margin-bottom: 20px; margin-left:auto; margin-right:0%;float:right" class="search_item">										
+										<input type="submit" style="margin-right:3%" value="edit" class="button search_button">
+										<button class="button search_button"  onclick="javascript:changePassword()">change password</button>
+									</div>
+									
+								</form>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	</div>
+
+
+	<!-- Copyright -->
+
+	<div  class="copyright">
+		<div  class="container">
+			<div class="row">
+				<div style="content-align:center" class="col-lg-3 order-lg-1 order-2  ">
+					<div  class="copyright_content d-flex flex-row align-items-center">
+						<div style="margin-left:0%;">
+							&copy; Internet software architecture project by: Milica, Andrijana and Aleksa 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="js/single_listing_custom.js"></script>
+<script src="js/profil.js"></script>
+
+</body>
+
+</html>

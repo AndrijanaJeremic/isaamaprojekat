@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title id="titl_aviokompanija">Make a reservation</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_responsive.css">
+	<link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/offers_responsive.css">
+	<link rel="stylesheet" type="text/css" href="styles/moe.css">
+</head>
+
+<body>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="js/mustache.js"></script>
+<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="js/frameworks/fabric.min.js"></script>
+<script src="js/single_listing_custom.js"></script>
+<script src="js/rezervacija.js"></script>
+<script src="js/offers_custom.js"></script>
+
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo"><a href="index.html"><img src="images/logo.png" alt="">where to</a></div>
+						</div>
+						<div style="margin-right:0%" class="main_nav_container ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="index.html">home</a></li>
+								<li class="main_nav_item"><a href="profil.html">PROFILE</a></li>
+								<li class="main_nav_item"><a onclick="javascript:odjava()" href="index.html">log out</a></li>
+							</ul>
+						</div>
+						<div class="content_search ml-lg-0 ml-auto">
+
+						</div>
+
+						<form id="search_form" class="search_form bez_1">
+							<input type="search" class="search_content_input bez_1">
+						</form>
+						
+						<div class="hamburger">
+							<i class="fa fa-bars trans_200"></i>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</nav>
+
+	</header>
+
+	<div class="menu trans_500">
+		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+			<div class="menu_close_container"><div class="menu_close"></div></div>
+			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+			<ul>
+				<li class="menu_item"><a href="index.html">home</a></li>
+				<li class="menu_item"><a href="about.html">about us</a></li>
+				<li class="menu_item"><a href="offers.html">offers</a></li>
+				<li class="menu_item"><a href="blog.html">news</a></li>
+				<li class="menu_item"><a href="contact.html">contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Home -->
+
+
+	<!-- Offers -->
+
+	<div class="listing">
+
+
+
+		<!-- DEFAULTNI PRIKAZ PRILIKOM ULASKA NA STRANICU AVIO KOMPANIJE -->
+		<div  class="container" style="margin-top: 0%">
+			
+			<br>
+			<br>
+			<br>
+			<div class="row" >
+				<div   class="col-lg-12">
+					<div id="defaultAirlineView" class="single_listing">
+								<br>
+			<br>
+			<br>
+						<h1  class="hotel_title">Flight Information:</h1>
+						<br>
+						<ul style="list-style-type:circle; margin-left:15px">
+							<li><p id="flightFrom">From: </p></li>
+							<li><p id="flightTo">To: </p></li>
+							<li><p id="flightDuration">Duration: </p></li>
+							<li><p id="flightDeparture">Departure time: </p></li>
+							<li><p id="flightArrival">Arrival time: </p></li>
+						</ul>
+
+
+								<div class="rooms">
+									<br>
+									<br>
+									<h3 style="text-align:center">PLEASE FILL OUT THE FOLLOWING:</h3>
+									<br>
+									<br>
+									
+									<ul style="list-style-type:none" id="personsList">									
+										<template id="personTemplate">
+											<li id="listTag">
+												<br>
+												<h1 id="tajtl" class="hotel_title">Person on flight:</h1>
+												<br>
+												<div id="personIndex" style="margin: 0; color: #31124A;"><b>SELECT FRIEND FROM FRIEND LIST: </b></div>
+												<select class="selectFriendList" style="height: 45px; width: 49%;border-color: #31124A; border-style: solid;" id="friends">
+												</select>
+												<br><br>
+												<div style="width: 100%;">
+											
+													<div style="margin-bottom: 60px; margin-bottom: 80px;" id="div_new">
+														<form action="#" id="add_form" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+															<div style="height: 121px; width: 49%; margin-top: 5%" class="search_item">
+																<div style="margin: 0; color: #31124A;" >Name: </div>
+																<input id="imePersone" style="border-color: #31124A; border-style: solid;" type="text" name="new_name" class="search_input" required="required">
+																<p id="errorName" hidden style="color:red">Please insert correct name.</p>
+																<br>
+															</div>
+															<div style="height: 121px; width: 49%;  margin-top: 5%" class="search_item">
+																<div style="margin: 0; color: #31124A;">Last name: </div>
+																<input id="przPersone" style="border-color: #31124A; border-style: solid;" type="text" name="new_city" class="search_input" required="required">
+																<p id="errorLastname" hidden style="color:red">Please insert correct lastname.</p>
+																<br>
+															</div>
+															<div style="height: 121px; width: 49%; margin-top: 0%" class="search_item">
+																<div style="margin: 0; color: #31124A;" >email: </div>
+																<input id="emailPersone" style="border-color: #31124A; border-style: solid;" type="text" name="new_street" class="search_input" required="required">
+																<p id="errorEmail" hidden style="color:red">Please insert correct email.</p>
+																<br>
+															</div>
+															<div style="height: 121px; width: 49%;  margin-top: 0%" class="search_item">
+																<div style="margin: 0; color: #31124A;">Passport number: </div>
+																<input id="passPersone" style="border-color: #31124A; border-style: solid;" type="text" name="new_street_number" class="search_input" required="required">
+																<p id="errorPass" hidden style="color:red">Please insert correct passport number.</p>
+																<br>
+															</div>
+														</form>
+													</div>	
+													
+													<!-- PRTLJAG -->
+													
+													<h3 style="text-align: center;">CHOOSE BAGGAGE SIZE:</h3>
+													<div style="margin-bottom: 60px; margin-bottom: 30px; margin-left: 7%;" >
+														<form id="radioButtonForm" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+															<div style="height: 121px; width: 33%; margin-top: 5%" class="search_item">
+																<input type="radio" name="radioButton" value="0"> CARRY ON<br>
+															</div>
+															<div style="height: 121px; width: 33%; margin-top: 5%" class="search_item">
+																<input checked type="radio" name="radioButton" value="1"> STANDARDN SIZE - 20kg max<br>
+															</div>
+															<div style="height: 121px; width: 33%; margin-top: 5%" class="search_item">
+																<input type="radio" name="radioButton" value="2"> SUPERSIZED - 35kg max<br>
+															</div>
+														</form>
+													</div>	
+													<h3 style="text-align: center; margin-top:5%;">CHOOSE A FREE SEAT:</h3>
+													<br>
+													<div class="scrollmenu">
+														<canvas style="align-content:center; margin-left:auto; margin-right:auto; text-align: center;" id="seatCanvas" width="1500" height="300"></canvas>	
+													</div>
+													<br>
+													<p id="errorSeat" hidden style="color:red; align-content:center; text-align:center"> A seat must be selected. </p>
+													
+													<div>
+												</div>
+													<!-- PRTLJAG -->
+												</div>				
+												<hr>		
+											</li>				
+										</template>
+									</ul>									
+								</div>
+								
+								<button id="inserNewPerson" class="button search_button">Add a person<span></span><span></span><span></span></button>
+								<div style="float:right; margin-top: 35px; margin-bottom: 60px">
+								<h3 style="margin-left:30px; color:black">TOTAL COST: </h3>
+								<hr>
+								<h2 style="text-align:center" id="price"></h2>
+								<button id="makeReservation" class="button search_button">BOOK FLIGHT<span></span><span></span><span></span></button>
+								</div>
+					</div>
+
+		</div>
+	</div>
+
+
+</div>
+</div>
+</div>
+
+
+	<!-- Copyright -->
+
+	<div  class="copyright">
+		<div  class="container">
+			<div class="row">
+				<div style="content-align:center" class="col-lg-3 order-lg-1 order-2  ">
+					<div  class="copyright_content d-flex flex-row align-items-center">
+						<div style="margin-left:0%;">
+							&copy; Internet software architecture project by: Milica, Andrijana and Aleksa 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<!--FRAMEWORKS-->
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="js/offers_custom.js"></script>
+
+
+
+
+<!-- TEMPLATE -->
+
+
+</body>
+
+</html>

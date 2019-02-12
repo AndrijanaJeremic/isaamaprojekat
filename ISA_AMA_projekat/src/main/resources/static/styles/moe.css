@@ -1,0 +1,76 @@
+table 
+{
+	border-collapse: collapse; 
+	align-content: center;
+	margin-left: 0%; 
+}
+
+th
+{
+   padding: 5px 40px;
+   vertical-align: middle;
+   align-content: center;
+   text-align: center;
+   
+}
+
+tr 
+{
+  border-bottom: solid 1px black; 
+  padding: 5px 40px;
+  vertical-align: middle;
+  align-content: center;
+  text-align: center;
+   
+}
+td 
+{
+  border-top: solid 1px black; 
+  padding: 5px 40px;
+  vertical-align: middle;
+  align-content: center;
+  text-align: center;
+ }
+ 
+ 
+ div.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+#rating1 { font-size: 0; }
+#rating1  span { font-size: 40px; }
+#rating1  span::before { content: "☆"; }
+#rating1 span.active::before {content: "★";}
+#rating1  span:hover { cursor: pointer; }
+
+
+#rating2 { font-size: 0; }
+#rating2  span { font-size: 40px; }
+#rating2  span::before { content: "☆"; }
+#rating2  span.active::before {content: "★";}
+#rating2  span:hover { cursor: pointer; }
+
+#rating3 { font-size: 0; }
+#rating3  span { font-size: 40px; }
+#rating3  span::before { content: "☆"; }
+#rating3  span.active::before {content: "★";}
+#rating3  span:hover { cursor: pointer; }
+
+#rating4 { font-size: 0; }
+#rating4  span { font-size: 40px; }
+#rating4  span::before { content: "☆"; }
+#rating4  span.active::before {content: "★";}
+#rating4  span:hover { cursor: pointer; }
+
+#rating5 { font-size: 0; }
+#rating5  span { font-size: 40px; }
+#rating5  span::before { content: "☆"; }
+#rating5  span.active::before {content: "★";}
+#rating5  span:hover { cursor: pointer; }
+
+#rating6 { font-size: 0; }
+#rating6  span { font-size: 40px; }
+#rating6  span::before { content: "☆"; }
+#rating6  span.active::before {content: "★";}
+#rating6  span:hover { cursor: pointer; }

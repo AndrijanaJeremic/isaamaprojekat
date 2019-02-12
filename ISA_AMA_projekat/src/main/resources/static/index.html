@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Where to</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/offers_responsive.css">
+<link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/single_listing_responsive.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css">
+</head>
+
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+
+		<!-- Top Bar -->
+
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col d-flex flex-row">
+						<div class="user_box ml-auto">
+							<div id="prijava" class="user_box_login user_box_link"><a href="prijava.html">login</a></div>
+							<div id="reg" class="user_box_register user_box_link"><a href="registration.html">register</a></div>
+							<div id="odjava" class="user_box_login user_box_link" onclick="javascript:odjava()" ><a href="index.html">logout</a></div>
+							<div id="rentacarS" class="user_box_login user_box_link" ><a id="linkServis">Your rentacar</a></div>
+							<div id="hotelAdmin" class="user_box_login user_box_link" ><a id="linkHotelAdmin">Your hotel</a></div>
+							<div id="profilKorisnika" class="user_box_register user_box_link" ><a href="profil.html">profile</a></div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo"><a href="#"><img src="images/logo.png" alt="">where to</a></div>
+						</div>
+						<div class="main_nav_container ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="index.html">home</a></li>
+							</ul>
+						</div>
+						
+						<div class="hamburger">
+							<i class="fa fa-bars trans_200"></i>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</nav>
+
+	</header>
+
+	<div class="menu trans_500">
+		<div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
+			<div class="menu_close_container"><div class="menu_close"></div></div>
+			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
+			<ul>
+				<li class="menu_item"><a href="index.html">home</a></li>
+				<li class="menu_item"><a href="about.html">about us</a></li>
+				<li class="menu_item"><a href="contact.html">contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/about_background.jpg"></div>
+		<div class="home_content">
+		</div>
+	</div>
+
+	<!-- Offers -->
+
+	<div class="offers">
+
+		<!-- Search -->
+
+		<div class="search">
+			<div class="search_inner">
+
+				<!-- Search Contents -->
+				
+				<div class="container fill_height no-padding">
+					<div class="row fill_height no-margin">
+						<div class="col fill_height no-padding">
+
+							<!-- Search Tabs -->
+
+							<div class="search_tabs_container">
+								<div class="search_tabs d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+									<div onclick="javascript:showContentAvio()" class="search_tab active d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/departure.png" alt="">flights</div>
+									<div onclick="javascript:showContentHotel()" class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/suitcase.png" alt=""><span>hotels</span></div>
+									<div onclick="javascript:showContentRent()" class="search_tab d-flex flex-row align-items-center justify-content-lg-center justify-content-start"><img src="images/bus.png" alt="">car rentals</div>
+								</div>
+							</div>
+
+
+							<!-- Search panel za letove -->
+							<div class="search_panel active">
+								<div style="width: 100%;"  id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+									<div style="width: 20%; height:90px" class="search_item">
+										<div>From</div>
+										<input id="searchFrom" type="text" class="destination search_input">
+										
+									</div>
+
+									<div style="width: 20%; height:90px" class="search_item">
+										<div>To</div>
+										<input id="seatchTo" type="text" class="destination search_input">
+									</div>
+
+									<div class="search_item" style="width: 20%; height:90px">
+										<div>Flight departure:</div>
+										<input style="" id="searchDeparture" type="date" class="check_in search_input" placeholder="dd/mm/yyyy">
+										<p hidden id="searchDateError" style="color:white;">Please insert a valid date.</p>
+									</div>
+									
+									<div class="search_item" style="width: 15%; height:90px">
+										<div>Maximum price:</div>
+										<input id="searchMaxPrice" type="text" class="check_in search_input">
+										<p hidden id="searchPriceError" style="color:white;">Please insert a valid price.</p>
+										
+									</div>
+									
+									<div  class="search_item" style="width: 15%; margin-top:-38px; height:90px">
+										<div>Maximum flight duration:</div>
+										<input id="searchMaxDuration" type="text" class="check_in search_input" >
+										<p hidden id="searchDurationError" style="color:white;">Please insert a valid number.</p>
+									</div>
+
+									<button id="searchFlightsButton" style="margin-left: 80%;margin-top:5%" class="button search_button" >search<span></span><span></span><span></span></button>
+								</div>
+							</div>
+
+
+							<!-- Search panel za hotele -->
+							<div class="search_panel">
+								<form id="search_form_2" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+									<div style="width: 40%;" class="search_item">
+										<div>hotel name or location</div>
+										<input type="text" class="destination hotel_name search_input hotel_search" name="name_location_hotel" id="name_location_hotel" style="width: 100%;" required="required">
+									</div>
+									<div style="width: 22%" class="search_item">
+										<div>check in</div>
+										<input type="date" class="check_in search_input hotel_search" name="check_in_hotel" placeholder="dd/mm/yyyy" required="required">
+									</div>
+									<div  style="width: 22%" class="search_item">
+										<div>check out</div>
+										<input type="date" class="check_out search_input hotel_search" name="check_out_hotel" placeholder="dd/mm/yyyy" required="required">
+									</div>
+									<div style="width: 10%" class="search_item">
+										<div>adults</div>
+										<input type="number" class="adults search_input hotel_search" name="adults_hotel" placeholder="0" min="0">
+									</div>
+									<div style="width: 100%"  style="display: none;">
+										<p id="error_date" style="height: 35px; margin-left: 41.5%; margin-top: 1%; display: none; color: white; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">Check in date is after check out date.</p>
+									</div>
+									<button style="margin-left: 80%;" id="hotel_search_button" class="button search_button">search<span></span><span></span><span></span></button>
+									
+								</form>
+							</div>
+
+
+
+
+							<!-- Search panel za rentale -->
+							<div class="search_panel">
+								<form style="width: 100%;" id="search_form_3" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+									<div style="width: 25%;" class="search_item">
+										<div>rental name or location</div>
+										<input type="text" class="destination rental_name search_input" name="name_location_rentacar" id="name_location_rentacar" style="width: 100%;" required="required">
+									</div>
+									<div class="search_item" style="width: 15%;">
+										<div>check in</div>
+										<input type="date" class="check_in search_input" name="check_in_car" placeholder="dd/mm/yyyy" required="required">
+									</div>
+									<div style="width: 12%" class="search_item">
+										<div>check in town</div>
+										<input type="text" class="destination rental_name search_input" name="check_in_town" required="required">
+									</div>
+									<div class="search_item" style="width: 15%;">
+										<div>check out</div>
+										<input type="date" class="check_out search_input" name="check_out_car" placeholder="dd/mm/yyyy" required="required">
+									</div>
+									<div style="width: 12%" class="search_item">
+										<div>check out town</div>
+										<input type="text" class="destination rental_name search_input" name="check_out_town" required="required">
+									</div>
+									<div style="width: 7%" class="search_item">
+										<div>passengers</div>
+										<input type="number" class="adults search_input" name="passengers_rent" placeholder="0" min="0">
+									</div>
+									<div style="width: 100%"  style="display: none;">
+										<p id="error_date_rentacar" style="height: 35px; margin-left: 52.5%; margin-top: 1%; display: none; color: white; background: url(images/exclamation.png) no-repeat scroll 7px 7px; padding-left: 45px;">Check in date is after check out date.</p>
+									</div>
+									<button style="margin-left: 80%;" class="button search_button" id="rent_search_butt">search<span></span><span></span><span></span></button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</div>	
+		</div>
+
+		<!-- Offers -->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-1 temp_col"></div>
+				
+								<div class="col-lg-12" >
+					<br>
+					<br>
+					<!-- Offers Grid -->
+					<!-- PREPORUCENI HOTELI -->
+					<div class="offers_grid" id="ubaci_hotele_template" style="display: none;">
+					<h1 class="hotel_title rentacar_title" id="hotel_title">Hotels</h1>
+					
+						<!-- Offers Item -->
+						<template class="template_hotel" id="template_hotel">
+							<div class="offers_item rating_4" id="ubaci">
+								<div class="row">
+									<div class="col-lg-3 col-1680-4">
+										<div class="offers_image_container">
+											<div class="offer_name" style=" height: 70%; text-align: center; padding: 13% 0px"><p id = "name_hotel" style = "color:white;"></p></div>
+										</div>
+									</div>
+									<div class="col-lg-8">
+									
+										<div class="offers_content">
+											<div>
+												<span class="contact_info_icon" style="float: left;"><img src="images/placeholder.svg" alt="" height="20" width="20"></span>
+												<span><p class="offers_text" id = "text_hotel"></p></span>
+											</div>
+											<div class="button book_button" id="dugme_view_details"></div>
+											<div class="offer_reviews">
+												<div class="offer_reviews_content">
+													<div class="offer_reviews_title">rating</div>
+												</div>
+												<div class="offer_reviews_rating text-center" id = "rating_hotel"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</template>
+						
+						
+					</div>
+					<button id="button_back_to_reservation_hotel" style="display: none; float: right; position: relative;" class="button_back_to_reservation button search_button" onclick="javascript:backToReservation()">Back to reservation</button>
+					
+					<!-- PREPORUCENI RENTALI -->
+					<div class="offers_grid" id="ubaci_rentacar_template" style="display: none;">
+					<h1 class="rentacar_title" id="rentacar_title">Rent-a-car</h1>
+					
+						<!-- Offers Item -->
+						<template class="template_rentacar" id="template_rentacar">
+							<div class="offers_item rating_4" id="ubaciRentacar">
+								<div class="row">
+									<div class="col-lg-3 col-1680-4">
+										<div class="offers_image_container">
+											<div class="offer_name" style=" height: 70%; text-align: center; padding: 13% 0px"><p id = "name_rentacar" style = "color:white;"></p></div>
+										</div>
+									</div>
+									<div class="col-lg-8">
+									
+										<div class="offers_content">
+											<div>
+												<span class="contact_info_icon" style="float: left;"><img src="images/placeholder.svg" alt="" height="20" width="20"></span>
+												<span><p class="offers_text" id = "text_rentacar"></p></span>
+												<span><p class="offers_text" id = "rentacar_fil"></p></span>
+											</div>
+											<div class="button book_button" id="dugme_view_details_rentacar"></div>
+											<div class="offer_reviews">
+												<div class="offer_reviews_content">
+													<div class="offer_reviews_title">rating</div>
+												</div>
+												<div class="offer_reviews_rating text-center" id = "rating_rentacar"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</template>
+						<button id="button_back_to_reservation_rental" style="display: none; float: right; position: relative;" class="button_back_to_reservation button search_button" onclick="javascript:backToReservation()">Back to reservation</button>
+					</div>
+				</div>
+				
+				<div class="col-lg-11">
+					
+
+
+
+
+					<div hidden style="display: none; margin-top:0%;margin-bottom:-10%" id="searchListing" class="single_listing letoviStuff2">		
+						<h1 style="margin-bottom:10%"  class="hotel_title" id="naslovListing" >Search Results</h1>
+						<p hidden id="noFlightsFound" style="margin-top:0%; text-align:center">No flights found.</p>
+						<br><br>
+						
+						<ul style="list-style-type:none"  id="selektovaniLetovi">
+	
+						</ul>
+						
+						<template id="pretragaTemplate">
+							<div class="room">
+								<!-- Room -->
+								<div class="row">
+									<div class="col-lg-2">
+										<div class="room_image"><img src="images/departure.png" style="float:left;height: 30px;width: 50px; margin-top: 35%; margin-left: 35%" alt=""></div>
+									</div>
+									<div class="col-lg-7">
+										<div class="room_content">
+											<div class="room_title">{{odakle}}</div>
+											<div class="room_price" id="vremePoletanja" style="margin-top: 0%">Departure: {{vremePoletanja}}</div>
+											<br>
+											<div class="room_title">{{dokle}}</div>
+											<div class="room_price" id="vremeSletanja" style="margin-top: 0%">Arrives: {{vremeSletanja}}</div>
+												<div style="font-size: x-large" id="cenaPopust" class="room_text">{{cena}}</div>
+										</div>
+									</div>
+									<div class="col-lg-3 text-lg-right">
+										<div class="room_button">
+											<div style="margin-top: 0%" class="button book_button trans_200 "><a id="rezButton" class href="javascript:void(0)">book<span></span><span></span><span></span></a></div>
+											<p  hidden id="departed" style="margin-top:-9%; color:#ff9900;font-size: x-large">DEPARTED</p>
+										</div>
+									</div>
+
+								</div>
+
+								<hr>
+							</div>
+						</template>
+					</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					 <div style="margin-top:15%;margin-bottom:5%" class="letoviStuff3" id="specialOffers">
+							<br>
+							<h1 class="hotel_title">Special Offers</h1>
+							<h4>BOOK THIS FLIGHTS WITH JUST ONE CLICK!</h4>
+							<p>( available for one person with CARRY ON luggage only )</p>
+							<br>
+							<div class="rooms">
+								<ul style="list-style-type:none" id="action_list">
+
+								 </ul>
+								 
+								 <template id="action_template">
+									<div class="room">
+										<!-- Room -->
+										<div class="row">
+											<div class="col-lg-2">
+												<div class="room_image"><img src="images/departure.png" style="height: 30px;width: 50px; margin-top: 35%; margin-left: 35%" alt=""></div>
+											</div>
+											<div class="col-lg-7">
+												<div class="room_content">
+													<div class="room_title">{{odakle}}</div>
+													<div class="room_price" id="vremePoletanja" style="margin-top: 0%">{{vremePoletanja}}</div>
+													<br>
+													<div class="room_title">{{dokle}}</div>
+													<div class="room_price" id="vremeSletanja" style="margin-top: 0%">{{vremeSletanja}}</div>
+														<div style="margin-top:15px;float:left; margin-right:30px" id="cenaOriginal" ><strike> {{cena}}.00</strike></div>
+														<div style="font-size: x-large" id="cenaPopust" class="room_text">{{cena}}</div>
+												</div>
+											</div>
+											<div class="col-lg-3 text-lg-right">
+												<div class="room_button">
+													<div style="margin-top: 0%" class="button book_button trans_200"><a href="javascript:void(0)" id="quickRezButton">book right now<span></span><span></span><span></span></a></div>
+													<p  hidden id="Qdeparted" style="margin-top:-9%; color:#ff9900;font-size: x-large">DEPARTED</p>
+												</div>
+											</div>
+	
+										</div>
+	
+										<hr>
+									</div>
+								</template>
+							</div>
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				</div>
+				
+
+				<div class="col-lg-12" style="display: none;">
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<!-- Offers Grid -->
+					<!-- RENTACAR SERVISI -->
+					<h1 class="hotel_title">Rent-a-car services</h1>
+					<div class="offers_grid">
+
+						<!-- Offers Item -->
+
+						<div class="offers_item rating_4">
+							<div class="row">
+								<div class="col-lg-1 temp_col"></div>
+								<div class="col-lg-3 col-1680-4">
+									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@kensuarez -->
+										<div class="offers_image_background" style="background-image:url(images/rent-1.jpg)"></div>
+										<div class="offer_name"><a href="single_listing.html">thakadiel</a></div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="offers_content">
+										<div class="offers_price">$70<span>per day</span></div>
+										<div class="rating_r rating_r_4 offers_rating" data-rating="4">
+											<i></i>
+											<i></i>
+											<i></i>
+											<i></i>
+											<i></i>
+										</div>
+										<p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Lorem ipsum dolor sit amet.</p>
+										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
+										<div class="offer_reviews">
+											<div class="offer_reviews_content">
+												<div class="offer_reviews_title">very good</div>
+												<div class="offer_reviews_subtitle">100 reviews</div>
+											</div>
+											<div class="offer_reviews_rating text-center">8.1</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Offers Item -->
+
+						<div class="offers_item rating_3">
+							<div class="row">
+								<div class="col-lg-1 temp_col"></div>
+								<div class="col-lg-3 col-1680-4">
+									<div class="offers_image_container">
+										<!-- Image by https://unsplash.com/@thoughtcatalog -->
+										<div class="offers_image_background" style="background-image:url(images/rent-2.jpg)"></div>
+										<div class="offer_name"><a href="single_listing.html">enterprise</a></div>
+									</div>
+								</div>
+								<div class="col-lg-8">
+									<div class="offers_content">
+										<div class="offers_price">$50<span>per day</span></div>
+										<div class="rating_r rating_r_3 offers_rating" data-rating="3">
+											<i></i>
+											<i></i>
+											<i></i>
+											<i></i>
+											<i></i>
+										</div>
+										<p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Lorem ipsum dolor sit amet.</p>
+										<div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
+										<div class="offer_reviews">
+											<div class="offer_reviews_content">
+												<div class="offer_reviews_title">very good</div>
+												<div class="offer_reviews_subtitle">100 reviews</div>
+											</div>
+											<div class="offer_reviews_rating text-center">8.1</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				
+				<div class="letoviStuff1" style="width:90%">
+					<h1 style="margin-top:7%" class="hotel_title" id="aviokompanije_naslov">Airlines</h1>
+					<ul style="margin-top:5%;width:100%" id="aviokompanije">
+						
+					</ul>
+						<template id="airlineTemplate">
+							<div class="room">
+								<div id="airlineNaziv" style="font-size: x-large;margin-left:5%;margin-bottom: -5px" class="room_text">Ime Aviokompanije</div>
+									
+								<div style="float:right;margin-top:-45px;margin-bottom: 50px;" class="button book_button trans_200"><a href="" class="selektovanjeDestinacije" id="link">visit page<span></span><span></span><span></span></a></div>
+								
+								<div class="col-lg-3 text-lg-right">
+									<div >
+									</div>
+								</div>
+								<hr>	
+							</div>
+						</template>
+					
+				</div>
+				
+			</div>
+		</div>		
+	</div>
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<!-- About 1/3 -->
+				<div class="col-lg-3 footer_column">
+					<div class="footer_col">
+						<div class="footer_content footer_about">
+							<div class="logo_container footer_logo">
+								<div class="logo"><a href="#"><img src="images/logo.png" alt="">where to</a></div>
+							</div>
+							<p class="footer_about_text">
+
+								An Internet software architecture project by Andrijana, Milica and Aleksa.
+
+							</p>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- Contact -->
+				<div class="col-lg-3 footer_column">
+					<div class="footer_col">
+						<div class="footer_title">contact info</div>
+						<div class="footer_content footer_contact">
+							<ul class="contact_info_list">
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="images/placeholder.svg" alt=""></div></div>
+									<div class="contact_info_text">Trg Dositeja Obradovica 6, Novi Sad</div>
+								</li>
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="images/phone-call.svg" alt=""></div></div>
+									<div class="contact_info_text">2556-808-8613</div>
+								</li>
+								<li class="contact_info_item d-flex flex-row">
+									<div><div class="contact_info_icon"><img src="images/message.svg" alt=""></div></div>
+									<div class="contact_info_text"><a href="mailto:contactme@gmail.com?Subject=Hello" target="_top">whereto18@gmail.com</a></div>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+				<!-- Footer Column -->
+				<div style="width: 50%; margin-top: -9%" class="location_on_map">
+					<div class="location_on_map_title">location on map</div>
+
+					<div  class="travelix_map">
+						<div id="google_map" class="google_map">
+							<div class="map_container">
+								<div id="map" class="map"></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</footer>
+
+	<!-- Copyright -->
+
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 order-lg-1 order-2  ">
+					<div class="copyright_content d-flex flex-row align-items-center">
+						<div  style="margin-left:0%;">
+						&copy; Internet software architecture project by: Milica, Andrijana and Aleksa 
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="plugins/easing/easing.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="js/single_listing_custom.js"></script>
+<script src="js/offers_custom.js"></script>
+<script src="js/search.js"></script>
+<script src="js/indexcoa.js"></script>
+<script src="js/mustache.js"></script>
+<script src="js/map.js"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList"></script>
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+
+</body>
+
+</html>
