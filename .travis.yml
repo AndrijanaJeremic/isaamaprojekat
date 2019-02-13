@@ -7,10 +7,12 @@ addons:
   organization: "andrijanajeremic-github"
   token: $SONAR_TOKEN
 
-script:
-  - ./mvnw clean install -DskipTests=false -B
-  - ./mvnw sonar:sonar -Dsonar.projectKey=AndrijanaJeremic_isaamaprojekat -Dsonar.organization=andrijanajeremic-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
-
+mvn sonar:sonar \
+  -Dsonar.projectKey=AndrijanaJeremic_isaamaprojekat \
+  -Dsonar.organization=andrijanajeremic-github \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=d7c46cdea99b1ade81229f0a5459eeb24b1cc302
+  
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
