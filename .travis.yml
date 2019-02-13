@@ -11,7 +11,6 @@ addons:
   token: $SONAR_TOKEN
 
 script:
-  - ./mvnw clean install -DskipTests=false -B
   - ./mvnw sonar:sonar -Dsonar.projectKey=AndrijanaJeremic_isaamaprojekat -Dsonar.organization=andrijanajeremic-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
 
 
