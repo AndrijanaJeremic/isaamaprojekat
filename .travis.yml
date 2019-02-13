@@ -6,8 +6,8 @@ addons:
   sonarcloud:
   organization: "andrijanajeremic-github"
   token: $SONAR_TOKEN
-
-sonar:sonar \
+script:
+mvn sonar:sonar \
   -Dsonar.projectKey=AndrijanaJeremic_isaamaprojekat \
   -Dsonar.organization=andrijanajeremic-github \
   -Dsonar.host.url=https://sonarcloud.io \
